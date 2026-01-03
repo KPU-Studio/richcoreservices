@@ -1,56 +1,50 @@
 
-import { 
-  ShieldCheck, 
-  Cloud, 
-  Lightbulb, 
-  Settings2, 
-  Layers, 
-  Workflow,
-  Building2,
-  Stethoscope,
+import {
+  Settings2,
+  Network,
+  Mail,
+  Database,
   Landmark,
-  Rocket,
-  Globe
+  Headphones
 } from 'lucide-react';
 import { Service, Industry, CaseStudy, FAQItem } from './types';
 
-// Fix: Replaced CloudCircuit (non-existent) with Cloud icon
 export const SERVICES: Service[] = [
   {
-    id: 'strategy',
-    title: 'IT Strategy & Advisory',
-    description: 'Transform your business with a roadmap that aligns technology investments with your long-term strategic goals.',
-    icon: Lightbulb
-  },
-  {
-    id: 'cloud',
-    title: 'Cloud Architecture',
-    description: 'Optimized cloud migration and infrastructure design using AWS, Azure, and Google Cloud for scalability.',
-    icon: Cloud
-  },
-  {
-    id: 'cyber',
-    title: 'Cybersecurity & Compliance',
-    description: 'Protect your digital assets with advanced threat detection, risk assessments, and regulatory compliance (SOC2, HIPAA).',
-    icon: ShieldCheck
-  },
-  {
-    id: 'managed',
-    title: 'Managed IT Services',
-    description: '24/7 monitoring and proactive maintenance to ensure maximum uptime and system performance.',
+    id: 'managed-support',
+    title: 'Managed IT Support',
+    description: 'Comprehensive small-business IT support including endpoint management, software patching, troubleshooting, remote helpdesk services, and ongoing system maintenance.',
     icon: Settings2
   },
   {
-    id: 'infra',
-    title: 'Infrastructure Modernization',
-    description: 'Legacy system upgrades and hardware rationalization to improve efficiency and reduce technical debt.',
-    icon: Layers
+    id: 'network-admin',
+    title: 'Network Administration',
+    description: 'Professional network setup and management for wired and wireless environments, including VLAN configuration, routing, performance monitoring, and secure network optimization.',
+    icon: Network
   },
   {
-    id: 'automation',
-    title: 'Integration & Automation',
-    description: 'Seamless software connectivity and custom workflow automation to eliminate manual bottlenecks.',
-    icon: Workflow
+    id: 'microsoft-365',
+    title: 'Microsoft 365 Support',
+    description: 'Expert assistance with Microsoft 365 administration, including email setup, device management, user provisioning, and basic compliance configuration for secure collaboration.',
+    icon: Mail
+  },
+  {
+    id: 'data-protection',
+    title: 'Data Protection & Backup Support',
+    description: 'Secure data backup, recovery assistance, and data protection planning to safeguard your business information and ensure continuity.',
+    icon: Database
+  },
+  {
+    id: 'government-ready',
+    title: 'Government-Ready IT Support',
+    description: 'Technology support tailored for public sector needs, including documentation-ready processes, compliant service practices, and structured IT operations suitable for government environments.',
+    icon: Landmark
+  },
+  {
+    id: 'help-desk',
+    title: 'Help Desk',
+    description: 'Responsive technical support and troubleshooting assistance to keep your team productive and your systems running smoothly.',
+    icon: Headphones
   }
 ];
 

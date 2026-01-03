@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
           <div className="mb-12 lg:mb-0">
             <div className="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-              <span>Trusted IT Experts</span>
+              <span>Trusted IT Partners</span>
               <ChevronRight className="h-3 w-3" />
             </div>
             <h1 className="text-6xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">

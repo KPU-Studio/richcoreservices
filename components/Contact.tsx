@@ -131,10 +131,10 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-blue-200 text-sm uppercase tracking-wider font-bold">Email Us</p>
                     <a
-                      href="mailto:strategy@richcoreit.com"
+                      href="mailto:info@richcoreit.net"
                       className="text-xl font-medium hover:underline"
                     >
-                      strategy@richcoreit.com
+                      info@richcoreit.net
                     </a>
                   </div>
                 </div>
@@ -149,7 +149,7 @@ const Contact: React.FC = () => {
                       href="tel:+15558902345"
                       className="text-xl font-medium hover:underline"
                     >
-                      +1 (555) 890-2345
+                      +1 (703) 665-9101
                     </a>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-blue-200 text-sm uppercase tracking-wider font-bold">Headquarters</p>
-                    <p className="text-xl font-medium">Alexandria, VA</p>
+                    <p className="text-xl font-medium">Woodbridge, VA</p>
                   </div>
                 </div>
               </div>

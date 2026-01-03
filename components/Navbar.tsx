@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,8 +55,8 @@ const Navbar: React.FC = () => {
         }`}>
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3 group cursor-pointer">
-            <div className="bg-blue-600 p-2 rounded-xl group-hover:rotate-12 transition-transform">
-              <Shield className="h-6 w-6 text-white" />
+            <div className="p-1 rounded-xl group-hover:rotate-12 transition-transform">
+              <img src="/assets/RCI-1.png" alt="RichCore IT Services" className="h-16 w-16 object-contain" />
             </div>
             <span className="text-xl font-black tracking-tighter text-slate-900 uppercase">
               RichCore<span className="text-blue-600">IT</span>

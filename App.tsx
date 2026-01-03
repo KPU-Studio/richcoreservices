@@ -10,6 +10,7 @@ const About = lazy(() => import('./components/About'));
 const Services = lazy(() => import('./components/Services'));
 const WhyWorkWithUs = lazy(() => import('./components/WhyWorkWithUs'));
 const WhatWeDeliver = lazy(() => import('./components/WhatWeDeliver'));
+const Stats = lazy(() => import('./components/Stats'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -38,6 +39,9 @@ const App: React.FC = () => {
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <WhatWeDeliver />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <Stats />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <FAQ />

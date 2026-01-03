@@ -29,7 +29,7 @@ const About: React.FC = () => {
               <span className="text-blue-600">Technical Excellence.</span>
             </h2>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              At RichCoreITServices, we don't just provide IT solutions; we build strategic partnerships. Our mission is to navigate the complex technical landscape for you, ensuring your infrastructure is not just a support function, but a competitive advantage.
+              RichCore IT Services is an independent Managed IT Services provider specializing in small business IT support and government-compliant technology services. We deliver dependable IT operations, cyber-aware practices, and fast, responsive assistance. Whether supporting local businesses or public sector teams, we focus on creating secure, reliable, and efficient IT environments backed by clear communication and structured service delivery.
             </p>
 
             <div className="space-y-6">
