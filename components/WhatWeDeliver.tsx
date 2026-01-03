@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShieldAlert, BarChart3, Database, Workflow, ShieldCheck, Activity } from 'lucide-react';
+import { ShieldAlert, BarChart3, Database, Workflow, Route, ShieldCheck, Activity } from 'lucide-react';
 
 const WhatWeDeliver: React.FC = () => {
   const deliverables = [
@@ -22,7 +22,7 @@ const WhatWeDeliver: React.FC = () => {
     {
       title: "Strategic Technology Roadmap",
       desc: "A multi-year plan that aligns your technical capabilities with your business growth milestones.",
-      icon: Workflow
+      icon: Route
     },
     {
       title: "Regulatory Compliance",
@@ -37,7 +37,7 @@ const WhatWeDeliver: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 md:py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-blue-600 tracking-widest uppercase mb-3">Our Promise</h2>
@@ -57,7 +57,7 @@ const WhatWeDeliver: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">
+                <p className="text-slate-600 leading-relaxed text-sm">
                   {item.desc}
                 </p>
               </div>

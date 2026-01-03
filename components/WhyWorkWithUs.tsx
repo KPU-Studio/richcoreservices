@@ -28,7 +28,7 @@ const WhyWorkWithUs: React.FC = () => {
   ];
 
   return (
-    <section id="expertise" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <section id="expertise" className="py-12 md:py-16 lg:py-24 bg-slate-900 text-white relative overflow-hidden">
       {/* Background Patterns */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#3b82f6 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }}></div>

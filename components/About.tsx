@@ -1,29 +1,24 @@
 
 import React from 'react';
 import { Target, Cpu, ShieldCheck } from 'lucide-react';
-import LazyImage from './LazyImage';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden scroll-mt-24">
+    <section id="about" className="py-12 md:py-16 lg:py-24 bg-white overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="relative mb-12 lg:mb-0">
              <div className="grid grid-cols-2 gap-4">
-               <LazyImage
+               <img
                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600"
                  alt="Professional consultant"
-                 className="rounded-lg shadow-lg aspect-square"
-                 objectFit="cover"
+                 className="rounded-lg shadow-lg aspect-square object-cover"
                />
-               <div className="mt-8">
-                 <LazyImage
-                   src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600"
-                   alt="Collaboration"
-                   className="rounded-lg shadow-lg aspect-square"
-                   objectFit="cover"
-                 />
-               </div>
+               <img
+                 src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600"
+                 alt="Collaboration"
+                 className="rounded-lg shadow-lg aspect-square object-cover mt-8"
+               />
              </div>
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 p-8 rounded-full hidden lg:block opacity-10"></div>
           </div>
