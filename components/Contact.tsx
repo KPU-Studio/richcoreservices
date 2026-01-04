@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react'; // useRef temporarily disabled for localhost testing
+import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Mail, Phone, MapPin, Send, Loader2, User, Briefcase, MessageSquare } from 'lucide-react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
@@ -40,7 +40,15 @@ const Contact: React.FC = () => {
   // Watch form values for conditional styling
   const watchedValues = watch();
 
-  // TEMPORARILY DISABLED FOR LOCALHOST TESTING - RE-ENABLE BEFORE PRODUCTION
+  // Debug: Log hCaptcha configuration on mount
+  useEffect(() => {
+    const siteKey = import.meta.env.VITE_HCAPTCHA_SITE_KEY;
+    if (!siteKey) {
+      console.error('❌ VITE_HCAPTCHA_SITE_KEY is not set!');
+      setError('Configuration error: hCaptcha site key is missing. Please contact support.');
+    }
+  }, []);
+
   const handleCaptchaVerify = (token: string) => {
     setValue('h-captcha-response', token, { shouldValidate: true });
   };
@@ -49,10 +57,13 @@ const Contact: React.FC = () => {
     setValue('h-captcha-response', '', { shouldValidate: true });
   };
 
+  const handleCaptchaError = (error: string) => {
+    setError('hCaptcha failed to load. Please refresh the page or contact us directly.');
+  };
+
   const onSubmit = async (data: FormData) => {
     setError(null);
 
-    // TEMPORARILY DISABLED FOR LOCALHOST TESTING - RE-ENABLE BEFORE PRODUCTION
     // Check if captcha is completed
     if (!data['h-captcha-response']) {
       setError('Please complete the hCaptcha verification');
@@ -60,6 +71,7 @@ const Contact: React.FC = () => {
     }
 
     try {
+
       // Web3Forms endpoint
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -86,9 +98,13 @@ const Contact: React.FC = () => {
       if (result.success) {
         setSubmitted(true);
         reset();
-        captchaRef.current?.resetCaptcha(); // TEMPORARILY DISABLED FOR LOCALHOST TESTING
+        captchaRef.current?.resetCaptcha();
       } else {
-        throw new Error(result.message || 'Form submission failed');
+        // Show the actual error message from Web3Forms
+        const errorMessage = result.message || 'Form submission failed';
+        console.error('Web3Forms error:', errorMessage);
+        setError(`Submission failed: ${errorMessage}. Please try again or contact us directly.`);
+        return;
       }
     } catch (err) {
       console.error('Form submission error:', err);
@@ -100,7 +116,7 @@ const Contact: React.FC = () => {
     setSubmitted(false);
     setError(null);
     reset();
-    captchaRef.current?.resetCaptcha(); // TEMPORARILY DISABLED FOR LOCALHOST TESTING
+    captchaRef.current?.resetCaptcha();
   };
 
   // Helper to get field classes with validation states
@@ -326,13 +342,14 @@ const Contact: React.FC = () => {
                       sitekey={import.meta.env.VITE_HCAPTCHA_SITE_KEY}
                       onVerify={handleCaptchaVerify}
                       onExpire={handleCaptchaExpire}
+                      onError={handleCaptchaError}
                       theme="light"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    disabled={isSubmitting || !watchedValues['h-captcha-response']} // CAPTCHA CHECK TEMPORARILY DISABLED FOR LOCALHOST TESTING
+                    disabled={isSubmitting || !watchedValues['h-captcha-response']}
                     className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
