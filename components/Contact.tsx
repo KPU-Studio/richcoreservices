@@ -1,13 +1,17 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Mail, Phone, MapPin, Send, Loader2, User, Briefcase, MessageSquare } from 'lucide-react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
+import PhoneInput from 'react-phone-number-input';
+import { isPossiblePhoneNumber } from 'react-phone-number-input';
+import type { E164Number } from 'libphonenumber-js/core';
+import 'react-phone-number-input/style.css';
 
 interface FormData {
   name: string;
   email: string;
-  phone: string;
+  phone: E164Number | undefined;
   service: string;
   message: string;
   'h-captcha-response': string;
@@ -25,12 +29,13 @@ const Contact: React.FC = () => {
     setValue,
     reset,
     watch,
+    control,
   } = useForm<FormData>({
     mode: 'onBlur',
     defaultValues: {
       name: '',
       email: '',
-      phone: '',
+      phone: undefined,
       service: '',
       message: '',
       'h-captcha-response': '',
@@ -132,6 +137,21 @@ const Contact: React.FC = () => {
     }
 
     return `${baseClasses} border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent`;
+  };
+
+  // Helper for PhoneInput container classes
+  const getPhoneInputClasses = (hasError: boolean, hasValue: boolean, isTouched: boolean) => {
+    const baseClasses = "w-full rounded-xl border transition-all";
+
+    if (hasError) {
+      return `${baseClasses} border-red-500 focus-within:ring-2 focus-within:ring-red-500`;
+    }
+
+    if (isTouched && hasValue) {
+      return `${baseClasses} border-green-500 focus-within:ring-2 focus-within:ring-green-500`;
+    }
+
+    return `${baseClasses} border-slate-200 focus-within:ring-2 focus-within:ring-blue-600 focus-within:border-transparent`;
   };
 
   return (
@@ -274,19 +294,36 @@ const Contact: React.FC = () => {
 
                   {/* Phone Number (Optional) */}
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
                     <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
-                      <input
-                        type="tel"
-                        placeholder="+1 (555) 123-4567"
-                        className={getFieldClasses('phone', !!watchedValues.phone)}
-                        {...register('phone', {
-                          pattern: {
-                            value: /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,4}[-\s\.]?[0-9]{1,9}$/,
-                            message: 'Please enter a valid phone number'
+                      <Controller
+                        name="phone"
+                        control={control}
+                        rules={{
+                          validate: (value) => {
+                            if (!value) return true;  // Optional field
+                            return isPossiblePhoneNumber(value) || 'Please enter a valid phone number';
                           }
-                        })}
+                        }}
+                        render={({ field: { onChange, value, onBlur } }) => (
+                          <PhoneInput
+                            id="phone"
+                            value={value}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            defaultCountry="US"
+                            international={false}
+                            countryCallingCodeEditable={false}
+                            className={getPhoneInputClasses(
+                              !!errors.phone,
+                              !!value,
+                              !!touchedFields.phone
+                            )}
+                            numberInputProps={{
+                              className: 'w-full pl-4 pr-4 py-3 rounded-xl border-0 outline-none transition-all bg-transparent',
+                            }}
+                          />
+                        )}
                       />
                     </div>
                     {errors.phone && (

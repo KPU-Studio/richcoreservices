@@ -4,10 +4,8 @@ import { Award, ShieldCheck, Terminal, Search, Zap, Settings, GitBranch, Refresh
 
 const WhyWorkWithUs: React.FC = () => {
   const coreCompetencies = [
-    // { name: 'Cloud Architecture', description: 'Multi-cloud solutions', icon: Terminal },
     { name: 'Network Design', description: 'Enterprise infrastructure', icon: Zap },
     { name: 'Cybersecurity Best Practices', description: 'Security-first approach', icon: ShieldCheck },
-    // { name: 'Automation & Integration', description: 'Streamlined workflows', icon: GitBranch },
     { name: 'IT Strategy & Governance', description: 'Compliance & planning', icon: Settings },
     { name: 'Infrastructure Modernization', description: 'Legacy system updates', icon: RefreshCw },
   ];

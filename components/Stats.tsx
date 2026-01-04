@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Smile, Zap, History, MessageSquare } from 'lucide-react';
+import { Smile, Zap, History, MessageSquare, MessageCircleMore } from 'lucide-react';
 
 const Stats: React.FC = () => {
   const stats = [
@@ -28,7 +28,7 @@ const Stats: React.FC = () => {
     {
       label: "Support Requests",
       value: "300",
-      icon: MessageSquare,
+      icon: MessageCircleMore,
       suffix: "+",
       id: "04"
     }

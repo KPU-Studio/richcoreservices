@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight } from 'lucide-react';
-import logo from '../public/assets/RCI-1.png';
+import logo from '../src/assets/RCI-1.png';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,8 +35,8 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Solutions', href: '#services' },
+    { name: 'Expertise', href: '#expertise' },
   ];
 
   return (

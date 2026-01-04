@@ -78,19 +78,19 @@ export const INDUSTRIES: Industry[] = [
 
 export const FAQS: FAQItem[] = [
   {
-    question: "How do you handle data privacy and security?",
-    answer: "We follow industry-leading frameworks like ISO 27001 and NIST. All client data is handled with end-to-end encryption, and we conduct regular vulnerability assessments to ensure the highest security standards."
+    question: "What's included in Managed IT?",
+    answer: "Managed IT includes proactive monitoring, system patching, remote support, and day‑to‑day user assistance. We keep your devices secure, updated, and running smoothly so your business can operate without interruptions."
   },
   {
-    question: "Do you offer support for hybrid cloud environments?",
-    answer: "Yes, we specialize in bridging the gap between legacy on-premise systems and modern cloud providers (AWS, Azure, GCP), ensuring seamless data flow and management."
+    question: "How quickly do you respond?",
+    answer: "Most support requests receive a response within one hour during business hours. Urgent issues are prioritized to reduce downtime and keep your team productive."
   },
   {
-    question: "What is your typical engagement model?",
-    answer: "We offer project-based consulting for specific migrations or implementations, as well as ongoing Managed Service Provider (MSP) agreements for long-term IT operations."
+    question: "Can you help remotely?",
+    answer: "Yes. Most issues can be resolved remotely for faster service and minimal disruption. When needed, on‑site visits are available for hands‑on support."
   },
   {
-    question: "How long does a typical IT assessment take?",
-    answer: "A comprehensive IT strategy and cybersecurity assessment usually takes between 2 to 4 weeks, depending on the complexity of your infrastructure."
+    question: "Do you provide cybersecurity support?",
+    answer: "Yes. We offer essential cybersecurity services including patching, endpoint protection, secure configuration, and user guidance to help protect your business from common threats."
   }
 ];

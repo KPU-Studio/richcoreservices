@@ -27,6 +27,19 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
 /* Custom styles */
 body {
   font-family: var(--font-sans);
@@ -40,7 +53,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  background: linear-gradient(to right, #2563eb, #3b82f6, #4f46e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -55,6 +68,17 @@ html {
 *:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Custom tap highlight for mobile */
+* {
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Shimmer animation for image loading */
@@ -135,4 +159,72 @@ html {
   .animate-marquee:hover {
     animation-play-state: paused;
   }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee,
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* react-phone-number-input custom styling */
+.PhoneInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Country selector styling */
+.PhoneInputCountrySelect {
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.PhoneInputCountrySelect:hover {
+  background-color: rgb(248 250 252); /* slate-50 */
+}
+
+/* Override default country select arrow color */
+.PhoneInputCountrySelectArrow {
+  --PhoneInputCountrySelectArrow-color: rgb(148 163 184); /* slate-400 */
+  --PhoneInputCountrySelectArrow-opacity: 1;
+  margin-left: 0.25rem;
+}
+
+/* Country flag sizing */
+.PhoneInputCountryIcon {
+  --PhoneInputCountryFlag-height: 1.25rem; /* 20px */
+  --PhoneInputCountryFlag-aspectRatio: 1.5;
+}
+
+/* Focus state colors matching the form */
+.PhoneInput--focus {
+  --PhoneInput-color--focus: rgb(37 99 235); /* blue-600 */
+}
+
+/* Remove default focus outline - using Tailwind classes instead */
+.PhoneInputCountrySelect:focus {
+  outline: 2px solid rgb(37 99 235); /* blue-600 */
+  outline-offset: 2px;
+  border-radius: 0.5rem;
 }
