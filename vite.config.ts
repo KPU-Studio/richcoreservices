@@ -22,16 +22,6 @@ export default defineConfig(({ mode }) => {
         }
       },
       build: {
-        rollupOptions: {
-          output: {
-            manualChunks: {
-              // Separate vendor chunks for better caching
-              'react-vendor': ['react', 'react-dom'],
-              'icons': ['lucide-react'],
-              'recaptcha': ['react-google-recaptcha']
-            }
-          }
-        },
         // Enable source maps for production debugging (optional)
         sourcemap: false,
         // Optimize chunk size
@@ -47,7 +37,7 @@ export default defineConfig(({ mode }) => {
       },
       // Optimize dependencies
       optimizeDeps: {
-        include: ['react', 'react-dom', 'lucide-react', 'react-google-recaptcha']
+        include: ['react', 'react-dom', 'lucide-react']
       }
     };
 });

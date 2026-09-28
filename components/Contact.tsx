@@ -7,6 +7,7 @@ import PhoneInput from 'react-phone-number-input';
 import { isPossiblePhoneNumber } from 'react-phone-number-input';
 import type { E164Number } from 'libphonenumber-js/core';
 import 'react-phone-number-input/style.css';
+import { SITE } from '../site';
 
 interface FormData {
   name: string;
@@ -124,114 +125,103 @@ const Contact: React.FC = () => {
     captchaRef.current?.resetCaptcha();
   };
 
-  // Helper to get field classes with validation states
+  // Helper to get field classes with validation states (editorial: square, black borders)
   const getFieldClasses = (fieldName: keyof FormData, hasValue: boolean) => {
-    const baseClasses = "w-full pl-12 pr-4 py-3 rounded-xl border outline-none transition-all";
+    const baseClasses = "w-full pl-12 pr-4 py-3 font-serif rounded-none border outline-none transition-colors bg-white";
 
     if (errors[fieldName]) {
-      return `${baseClasses} border-red-500 focus:ring-2 focus:ring-red-500`;
+      return `${baseClasses} border-error focus:border-error`;
     }
 
     if (touchedFields[fieldName] && hasValue) {
-      return `${baseClasses} border-green-500 focus:ring-2 focus:ring-green-500`;
+      return `${baseClasses} border-black focus:border-accent`;
     }
 
-    return `${baseClasses} border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent`;
+    return `${baseClasses} border-hairline focus:border-black`;
   };
 
   // Helper for PhoneInput container classes
   const getPhoneInputClasses = (hasError: boolean, hasValue: boolean, isTouched: boolean) => {
-    const baseClasses = "w-full rounded-xl border transition-all";
+    const baseClasses = "w-full rounded-none border transition-colors bg-white";
 
     if (hasError) {
-      return `${baseClasses} border-red-500 focus-within:ring-2 focus-within:ring-red-500`;
+      return `${baseClasses} border-error focus-within:border-error`;
     }
 
     if (isTouched && hasValue) {
-      return `${baseClasses} border-green-500 focus-within:ring-2 focus-within:ring-green-500`;
+      return `${baseClasses} border-black focus-within:border-accent`;
     }
 
-    return `${baseClasses} border-slate-200 focus-within:ring-2 focus-within:ring-blue-600 focus-within:border-transparent`;
+    return `${baseClasses} border-hairline focus-within:border-black`;
   };
 
   return (
-    <section id="contact" className="py-12 md:py-16 lg:py-24 bg-slate-50 scroll-mt-24">
+    <section id="contact" className="py-16 md:py-24 scroll-mt-20 border-b border-hairline">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
+        <div className="border border-black">
           <div className="lg:grid lg:grid-cols-2">
             {/* Contact Info */}
-            <div className="bg-blue-600 p-10 lg:p-16 text-white">
-              <h2 className="text-3xl font-bold mb-6">Let's build something <br />resilient together.</h2>
-              <p className="text-blue-50 mb-12 text-lg">
-                Ready to optimize your infrastructure or secure your data? Reach out today for a discovery session.
+            <div className="bg-black p-10 lg:p-16 text-white">
+              <p className="font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-accent mb-4">
+                Get In Touch
+              </p>
+              <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-tight mb-6">
+                Let&rsquo;s build something resilient together.
+              </h2>
+              <p className="font-serif text-lg text-white/60 mb-12 leading-relaxed">
+                Ready to optimize your infrastructure or secure your data? Reach out today for a
+                discovery session.
               </p>
 
-              <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-500/50 p-3 rounded-lg">
-                    <Mail className="h-6 w-6" />
-                  </div>
+              <div className="border-t border-white/15">
+                <div className="flex items-start gap-4 py-5 border-b border-white/15">
+                  <Mail className="h-5 w-5 text-accent flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <div>
-                    <p className="text-blue-200 text-sm uppercase tracking-wider font-bold">Email Us</p>
-                    <a
-                      href="mailto:info@richcoreit.net"
-                      className="text-xl font-medium hover:underline"
-                    >
-                      info@richcoreit.net
+                    <p className="font-sans text-[11px] uppercase tracking-[0.15em] font-bold text-white/50">Email Us</p>
+                    <a href={`mailto:${SITE.email}`} className="font-serif text-lg hover:text-accent transition-colors">
+                      {SITE.email}
                     </a>
                   </div>
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-500/50 p-3 rounded-lg">
-                    <Phone className="h-6 w-6" />
-                  </div>
+                <div className="flex items-start gap-4 py-5 border-b border-white/15">
+                  <Phone className="h-5 w-5 text-accent flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <div>
-                    <p className="text-blue-200 text-sm uppercase tracking-wider font-bold">Call Us</p>
-                    <a
-                      href="tel:+15558902345"
-                      className="text-xl font-medium hover:underline"
-                    >
-                      +1 (703) 665-9101
+                    <p className="font-sans text-[11px] uppercase tracking-[0.15em] font-bold text-white/50">Call Us</p>
+                    <a href={SITE.phoneHref} className="font-serif text-lg hover:text-accent transition-colors">
+                      {SITE.phone}
                     </a>
                   </div>
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-500/50 p-3 rounded-lg">
-                    <MapPin className="h-6 w-6" />
-                  </div>
+                <div className="flex items-start gap-4 py-5 border-b border-white/15">
+                  <MapPin className="h-5 w-5 text-accent flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <div>
-                    <p className="text-blue-200 text-sm uppercase tracking-wider font-bold">Headquarters</p>
-                    <p className="text-xl font-medium">Woodbridge, VA</p>
+                    <p className="font-sans text-[11px] uppercase tracking-[0.15em] font-bold text-white/50">Headquarters</p>
+                    <p className="font-serif text-lg">{SITE.address.locality}, {SITE.address.region}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-16 pt-16 border-t border-blue-500/30">
-                <p className="text-blue-200 text-sm">Follow our technical insights:</p>
-                <div className="flex space-x-6 mt-4">
-                  {['LinkedIn', 'Facebook','Instagram'].map(social => (
-                    <a key={social} href="#" className="hover:text-blue-200 transition-colors font-medium underline decoration-blue-400 underline-offset-4">{social}</a>
-                  ))}
-                </div>
-              </div>
+              <p className="font-serif text-sm text-white/60 leading-relaxed mt-10">
+                Prefer to talk it through? Call us directly &mdash; we respond to most requests within
+                one business hour.
+              </p>
             </div>
 
             {/* Form */}
             <div className="p-10 lg:p-16">
               {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center">
-                  <div className="bg-green-100 p-6 rounded-full mb-6">
-                    <Send className="h-12 w-12 text-green-600" />
+                  <div className="border border-black p-6 mb-6">
+                    <Send className="h-10 w-10 text-accent" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-3xl font-bold text-slate-900 mb-4">Message Received!</h3>
-                  <p className="text-slate-600 text-lg">
-                    Thank you for reaching out. One of our technical advisors will contact you within 24 business hours.
+                  <h3 className="font-display text-3xl text-black mb-4">Message received.</h3>
+                  <p className="font-serif text-lg text-body">
+                    Thank you for reaching out. One of our technical advisors will contact you within
+                    24 business hours.
                   </p>
                   <button
                     onClick={handleSendAnother}
-                    className="mt-8 text-blue-600 font-bold hover:underline"
+                    className="mt-8 font-sans text-[13px] font-bold uppercase tracking-[0.1em] text-accent hover:underline"
                   >
                     Send another message
                   </button>
@@ -239,20 +229,23 @@ const Contact: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   {error && (
-                    <div role="alert" aria-live="polite" className="p-4 bg-red-50 border border-red-200 rounded-xl">
-                      <p className="text-sm font-medium text-red-800">{error}</p>
+                    <div role="alert" aria-live="polite" className="p-4 border border-error">
+                      <p className="font-serif text-sm text-error">{error}</p>
                     </div>
                   )}
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div>
-                      <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                      <label htmlFor="contact-name" className="block font-sans text-[13px] font-bold uppercase tracking-[0.1em] text-black mb-2">Full Name</label>
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-body" strokeWidth={1.5} />
                         <input
+                          id="contact-name"
                           type="text"
                           placeholder="John Doe"
+                          aria-invalid={errors.name ? 'true' : 'false'}
+                          aria-describedby={errors.name ? 'contact-name-error' : undefined}
                           className={getFieldClasses('name', !!watchedValues.name)}
                           {...register('name', {
                             required: 'Name is required',
@@ -264,18 +257,21 @@ const Contact: React.FC = () => {
                         />
                       </div>
                       {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+                        <p id="contact-name-error" role="alert" className="mt-1 font-serif text-sm text-error">{errors.name.message}</p>
                       )}
                     </div>
 
                     {/* Business Email */}
                     <div>
-                      <label className="block text-sm font-semibold text-slate-700 mb-2">Business Email</label>
+                      <label htmlFor="contact-email" className="block font-sans text-[13px] font-bold uppercase tracking-[0.1em] text-black mb-2">Business Email</label>
                       <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-body" strokeWidth={1.5} />
                         <input
+                          id="contact-email"
                           type="email"
                           placeholder="john@company.com"
+                          aria-invalid={errors.email ? 'true' : 'false'}
+                          aria-describedby={errors.email ? 'contact-email-error' : undefined}
                           className={getFieldClasses('email', !!watchedValues.email)}
                           {...register('email', {
                             required: 'Email is required',
@@ -287,14 +283,14 @@ const Contact: React.FC = () => {
                         />
                       </div>
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                        <p id="contact-email-error" role="alert" className="mt-1 font-serif text-sm text-error">{errors.email.message}</p>
                       )}
                     </div>
                   </div>
 
                   {/* Phone Number (Optional) */}
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                    <label htmlFor="phone" className="block font-sans text-[13px] font-bold uppercase tracking-[0.1em] text-black mb-2">Phone Number</label>
                     <div className="relative">
                       <Controller
                         name="phone"
@@ -320,42 +316,48 @@ const Contact: React.FC = () => {
                               !!touchedFields.phone
                             )}
                             numberInputProps={{
-                              className: 'w-full pl-4 pr-4 py-3 rounded-xl border-0 outline-none transition-all bg-transparent',
+                              className: 'w-full pl-4 pr-4 py-3 font-serif rounded-none border-0 outline-none transition-all bg-transparent',
+                              'aria-invalid': errors.phone ? 'true' : 'false',
+                              'aria-describedby': errors.phone ? 'contact-phone-error' : undefined,
                             }}
                           />
                         )}
                       />
                     </div>
                     {errors.phone && (
-                      <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+                      <p id="contact-phone-error" role="alert" className="mt-1 font-serif text-sm text-error">{errors.phone.message}</p>
                     )}
                   </div>
 
                   {/* Subject (Optional) */}
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Subject</label>
+                    <label htmlFor="contact-subject" className="block font-sans text-[13px] font-bold uppercase tracking-[0.1em] text-black mb-2">Subject</label>
                     <div className="relative">
-                      <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+                      <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-body" strokeWidth={1.5} />
                       <input
+                        id="contact-subject"
                         type="text"
-                        placeholder="e.g., Cloud Migration, Cybersecurity Audit, IT Strategy..."
+                        placeholder="e.g., Managed IT, Microsoft 365, Help Desk..."
                         className={getFieldClasses('service', !!watchedValues.service)}
                         {...register('service')}
                       />
                     </div>
                     {errors.service && (
-                      <p className="mt-1 text-sm text-red-600">{errors.service.message}</p>
+                      <p className="mt-1 font-serif text-sm text-error">{errors.service.message}</p>
                     )}
                   </div>
 
                   {/* Message */}
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Message</label>
+                    <label htmlFor="contact-message" className="block font-sans text-[13px] font-bold uppercase tracking-[0.1em] text-black mb-2">Message</label>
                     <div className="relative">
-                      <MessageSquare className="absolute left-4 top-4 h-5 w-5 text-slate-400" />
+                      <MessageSquare className="absolute left-4 top-4 h-5 w-5 text-body" strokeWidth={1.5} />
                       <textarea
+                        id="contact-message"
                         rows={5}
                         placeholder="Tell us about your project or challenges..."
+                        aria-invalid={errors.message ? 'true' : 'false'}
+                        aria-describedby={errors.message ? 'contact-message-error' : undefined}
                         className={`${getFieldClasses('message', !!watchedValues.message)} resize-none`}
                         {...register('message', {
                           required: 'Message is required',
@@ -367,11 +369,11 @@ const Contact: React.FC = () => {
                       />
                     </div>
                     {errors.message && (
-                      <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                      <p id="contact-message-error" role="alert" className="mt-1 font-serif text-sm text-error">{errors.message.message}</p>
                     )}
                   </div>
 
-    
+
                   {/* hCaptcha */}
                   <div className="flex justify-center">
                     <HCaptcha
@@ -387,7 +389,7 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting || !watchedValues['h-captcha-response']}
-                    className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 bg-black text-white font-sans text-[15px] font-bold uppercase tracking-[0.05em] rounded-none border border-black hover:bg-accent hover:border-accent transition-colors flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-black"
                   >
                     {isSubmitting ? (
                       <>
@@ -398,8 +400,8 @@ const Contact: React.FC = () => {
                       <span>Send Message</span>
                     )}
                   </button>
-                  <p className="text-xs text-slate-400 text-center">
-                    By submitting this form, you agree to our privacy policy.
+                  <p className="font-serif text-xs text-body text-center">
+                    We&rsquo;ll only use your details to respond to your inquiry.
                   </p>
                 </form>
               )}

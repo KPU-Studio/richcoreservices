@@ -36,3 +36,5 @@ yarn-error.log*
 next-env.d.ts
 .claude/*
 dist/*
+# Playwright CLI output (may contain credentials)
+.playwright-cli/

@@ -6,6 +6,8 @@ export interface Service {
   title: string;
   description: string;
   icon: LucideIcon;
+  /** What the client gets — used on the service detail page. */
+  benefits?: string[];
 }
 
 export interface Industry {

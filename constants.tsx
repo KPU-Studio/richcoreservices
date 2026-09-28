@@ -14,37 +14,73 @@ export const SERVICES: Service[] = [
     id: 'managed-support',
     title: 'Managed IT Support',
     description: 'Comprehensive small-business IT support including endpoint management, software patching, troubleshooting, remote helpdesk services, and ongoing system maintenance.',
-    icon: Settings2
+    icon: Settings2,
+    benefits: [
+      'Proactive monitoring that catches issues before they cause downtime',
+      'Automatic software patching across every device',
+      'Remote help desk for day-to-day user support',
+      'Ongoing maintenance so your systems stay fast and secure',
+    ]
   },
   {
     id: 'network-admin',
     title: 'Network Administration',
     description: 'Professional network setup and management for wired and wireless environments, including VLAN configuration, routing, performance monitoring, and secure network optimization.',
-    icon: Network
+    icon: Network,
+    benefits: [
+      'Reliable wired and wireless network setup',
+      'VLAN configuration and secure routing',
+      'Performance monitoring and optimization',
+      'Guest and staff network separation for security',
+    ]
   },
   {
     id: 'microsoft-365',
     title: 'Microsoft 365 Support',
     description: 'Expert assistance with Microsoft 365 administration, including email setup, device management, user provisioning, and basic compliance configuration for secure collaboration.',
-    icon: Mail
+    icon: Mail,
+    benefits: [
+      'Email and mailbox setup done right',
+      'User provisioning and device management',
+      'Multi-factor authentication and secure defaults',
+      'Basic compliance configuration for collaboration',
+    ]
   },
   {
     id: 'data-protection',
     title: 'Data Protection & Backup Support',
     description: 'Secure data backup, recovery assistance, and data protection planning to safeguard your business information and ensure continuity.',
-    icon: Database
+    icon: Database,
+    benefits: [
+      'Scheduled, secure backups of business data',
+      'Tested recovery so restores actually work',
+      'Data protection planning for continuity',
+      'Guidance to reduce ransomware and data-loss risk',
+    ]
   },
   {
     id: 'government-ready',
     title: 'Government-Ready IT Support',
     description: 'Technology support tailored for public sector needs, including documentation-ready processes, compliant service practices, and structured IT operations suitable for government environments.',
-    icon: Landmark
+    icon: Landmark,
+    benefits: [
+      'Documentation-ready processes for audits',
+      'Structured, repeatable IT operations',
+      'Service practices suited to public-sector needs',
+      'Clear reporting your stakeholders can rely on',
+    ]
   },
   {
     id: 'help-desk',
     title: 'Help Desk',
     description: 'Responsive technical support and troubleshooting assistance to keep your team productive and your systems running smoothly.',
-    icon: Headphones
+    icon: Headphones,
+    benefits: [
+      'Fast response during business hours',
+      'Remote troubleshooting for quick resolution',
+      'On-site help when hands-on support is needed',
+      'Friendly, jargon-free assistance for your whole team',
+    ]
   }
 ];
 
